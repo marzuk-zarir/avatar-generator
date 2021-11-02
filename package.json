@@ -13,7 +13,7 @@
         "web": {
             "context": "browser",
             "distDir": "public",
-            "publicUrl": "/public"
+            "publicUrl": "./"
         }
     },
     "keywords": [],
