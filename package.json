@@ -4,17 +4,8 @@
     "description": "",
     "scripts": {
         "serve": "parcel ./index.html",
-        "build": "parcel build ./index.html --target web",
-        "clean": "rm -rf ./dist .parcel-cache public"
-    },
-    "source": "index.html",
-    "web": "index.html",
-    "targets": {
-        "web": {
-            "context": "browser",
-            "distDir": "public",
-            "publicUrl": "./"
-        }
+        "build": "parcel build ./index.html --public-url './'",
+        "clean": "rm -rf ./dist .parcel-cache"
     },
     "keywords": [],
     "author": "",
