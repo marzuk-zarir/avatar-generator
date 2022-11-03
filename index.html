@@ -8,12 +8,10 @@
         <script src="./main.js" type="module" defer></script>
         <title>AvatarMaker - create your avatar</title>
     </head>
-    <body>
+    <body class="bg-light">
         <div x-data="avatar" class="container" style="max-width: 700px">
             <form @submit.prevent="" class="my-5">
-                <h1 class="display-6 text-center mb-5">
-                    Generate Avatar Image
-                </h1>
+                <h1 class="text-center mb-5 display-6">Generate Avatar Image</h1>
                 <input
                     x-model="name"
                     @keypress="keypressHandler()"
@@ -23,9 +21,9 @@
                     autocomplete="off"
                     autofocus
                 />
-                <fieldset class="row my-4 border-1">
-                    <legend class="col-form-label col-sm-2 pt-0">Color:</legend>
-                    <div class="col-sm-10 d-sm-flex flex-wrap">
+                <fieldset class="border-1 my-4 row">
+                    <legend class="col-form-label pt-0 col-sm-2">Color:</legend>
+                    <div class="flex-wrap col-sm-10 d-sm-flex">
                         <template x-for="(value, colorName) in colors">
                             <div class="form-check me-3">
                                 <input
@@ -42,16 +40,16 @@
                                     :for="colorName"
                                     :style="{ background: value }"
                                     x-text="colorName"
-                                    class="badge rounded-pill"
+                                    class="rounded-pill badge"
                                 >
                                 </label>
                             </div>
                         </template>
                     </div>
                 </fieldset>
-                <fieldset class="row my-4 border-1">
-                    <legend class="col-form-label col-sm-2 pt-0">Size:</legend>
-                    <div class="col-sm-10 d-sm-flex flex-wrap">
+                <fieldset class="border-1 my-4 row">
+                    <legend class="col-form-label pt-0 col-sm-2">Size:</legend>
+                    <div class="flex-wrap col-sm-10 d-sm-flex">
                         <template x-for="size in availableSizes">
                             <div class="form-check me-3">
                                 <input
@@ -64,46 +62,36 @@
                                     name="colors"
                                     class="form-check-input"
                                 />
-                                <label :for="size"
-                                    ><span x-text="size"></span>px</label
-                                >
+                                <label :for="size"><span x-text="size"></span>px</label>
                             </div>
                         </template>
                     </div>
                 </fieldset>
             </form>
             <div>
-                <div class="bg-light p-3 rounded-3">
+                <div class="bg-white rounded-3 p-3">
                     <template x-if="url && sizes.length">
                         <p class="text-end mb-0">
-                            <a
-                                :href="url"
-                                download="avatar"
-                                class="btn btn-sm btn-outline-success"
+                            <a :href="url" download="avatar" class="btn btn-sm btn-outline-success"
                                 >Download</a
                             >
-                            <button
-                                @click="copyUrl()"
-                                class="btn btn-sm btn-outline-info"
-                            >
+                            <button @click="copyUrl()" class="btn btn-sm btn-outline-info">
                                 Copy
                             </button>
                         </p>
                     </template>
                     <p>Preview:</p>
                     <template x-if="url && sizes.length">
-                        <div class="d-flex flex-wrap align-items-end">
+                        <div class="flex-wrap d-flex align-items-end">
                             <template x-for="size in sizes">
                                 <div class="text-center p-2">
                                     <img
                                         :src="url"
                                         :width="size"
-                                        class="img-fluid rounded-circle"
+                                        class="rounded-circle img-fluid"
                                     />
                                     <p class="mb-0">
-                                        <span x-text="size"></span>x<span
-                                            x-text="size"
-                                        ></span>
+                                        <span x-text="size"></span>x<span x-text="size"></span>
                                     </p>
                                 </div>
                             </template>
